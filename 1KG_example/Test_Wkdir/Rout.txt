@@ -1,0 +1,6 @@
+.Rprofile: Setting repository as http://cran.us.r-project.org 
+[H[J
+ ~/bin/util_func.r sourced!
+---------------
+
+[1] "LC_CTYPE=C;LC_NUMERIC=C;LC_TIME=C;LC_COLLATE=C;LC_MONETARY=C;LC_MESSAGES=en_US.UTF-8;LC_PAPER=en_US.UTF-8;LC_NAME=C;LC_ADDRESS=C;LC_TELEPHONE=C;LC_MEASUREMENT=en_US.UTF-8;LC_IDENTIFICATION=C"

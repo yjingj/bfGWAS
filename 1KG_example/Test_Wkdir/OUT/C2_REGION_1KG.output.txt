@@ -1,0 +1,87 @@
+Reading Files ... 
+Start reading pheno file ...
+open phenotype file ... /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/phenoAMD_1KG.txt
+Start reading vcf file first time ...
+Load VCF file genotype field: GT
+open vcf file ...
+
+ Matched phenotype sample IDs in the VCF file 2504
+vcf read first time success ... 
+Start reading annotation files: /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/annos/Anno_C2_REGION_1KG.gz 
+with code file /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/AnnoCode6.txt
+Number of annotation categories: 6
+Number of variants per category: 1418, 18, 0, 198, 0, 3841, 
+Readin files first time cost 0.277643mints 
+## number of total individuals = 2504
+## number of individuals with full phenotypes = 2504
+## number of total SNPs = 19232
+## number of analyzed SNPs = 5475
+Pass data check.
+Reorder y for reading vcf files ... 
+
+ Reorder phenotypes, final analyzed sample size ni_test = 2504
+Center phenotype ... 
+pheno_mean = 0.49401
+open vcf file second time ...
+read vcf file second time success ... 
+load genotype data cost 0.0905718mints
+Run MCMC...
+Calculating Z_scores, standard errors of effect-sizes, LRT statistics, pvals ... 
+Trace of Genotype Matrix = 0.17074
+Number of variants with p-value < 5e-8 : 75
+Start initializing MCMC ... 
+Start with Step-wise selected variants. 
+
+Starting model has variants with ranks: 
+0, 49, 
+rv from command line = 1
+Initial causal probability per category = 1e-06, 1e-06, 1e-06, 1e-06, 1e-06, 1e-06, 
+Initial effect-size variance per category = 10, 10, 10, 10, 10, 10, 
+Initially selected number of variants in the model = 2
+Initial number of selected variants per category : 0, 1, 0, 0, 0, 1, 
+Running MCMC                               0.00%  & acceptance ratio 0.00
+acceptance percentage = 0.241523
+# of selected variants per category: 
+2, 0, 0, 0, 0, 0, 
+loglike: 58.069551
+acceptance percentage = 0.242813
+# of selected variants per category: 
+2, 0, 0, 0, 0, 0, 
+loglike: 57.452782
+acceptance percentage = 0.243443
+# of selected variants per category: 
+2, 0, 0, 0, 0, 0, 
+loglike: 58.641141
+acceptance percentage = 0.241697
+# of selected variants per category: 
+1, 0, 0, 0, 0, 1, 
+loglike: 60.503667
+acceptance percentage = 0.242117
+# of selected variants per category: 
+1, 1, 0, 0, 0, 0, 
+loglike: 59.158257
+acceptance percentage = 0.243297
+# of selected variants per category: 
+0, 1, 0, 0, 0, 1, 
+loglike: 61.022310
+acceptance percentage = 0.244750
+# of selected variants per category: 
+1, 0, 0, 0, 0, 1, 
+loglike: 60.503667
+acceptance percentage = 0.242264
+# of selected variants per category: 
+2, 0, 0, 0, 0, 0, 
+loglike: 55.614261
+acceptance percentage = 0.242250
+# of selected variants per category: 
+1, 0, 0, 0, 0, 1, 
+loglike: 59.158439
+Running MCMC ==============================100.00%  & acceptance ratio 0.24
+MCMC completed ... 
+
+region_pip = 10000
+gamma acceptance percentage = 0.24
+# of selected variants per category: 1, 0, 0, 0, 0, 1, 
+beta_hat: -0.520552, -0.548898, 
+loglike: 60.503667
+k_save_sample = 10000

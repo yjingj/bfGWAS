@@ -1,0 +1,12 @@
+g++ -ggdb -Wall -O3 -I./libStatGen/include/ -I./zlib/ -D__ZLIB_AVAILABLE__ -D_FILE_OFFSET_BITS=64 -D__STDC_LIMIT_MACROS  -DWITH_LAPACK -m64  -c src/main.cpp -o src/main.o
+g++ -ggdb -Wall -O3 -I./libStatGen/include/ -I./zlib/ -D__ZLIB_AVAILABLE__ -D_FILE_OFFSET_BITS=64 -D__STDC_LIMIT_MACROS  -DWITH_LAPACK -m64  -c src/param.cpp -o src/param.o
+g++ -ggdb -Wall -O3 -I./libStatGen/include/ -I./zlib/ -D__ZLIB_AVAILABLE__ -D_FILE_OFFSET_BITS=64 -D__STDC_LIMIT_MACROS  -DWITH_LAPACK -m64  -c src/sfba.cpp -o src/sfba.o
+g++ -ggdb -Wall -O3 -I./libStatGen/include/ -I./zlib/ -D__ZLIB_AVAILABLE__ -D_FILE_OFFSET_BITS=64 -D__STDC_LIMIT_MACROS  -DWITH_LAPACK -m64  -c src/io.cpp -o src/io.o
+g++ -ggdb -Wall -O3 -I./libStatGen/include/ -I./zlib/ -D__ZLIB_AVAILABLE__ -D_FILE_OFFSET_BITS=64 -D__STDC_LIMIT_MACROS  -DWITH_LAPACK -m64  -c src/lm.cpp -o src/lm.o
+g++ -ggdb -Wall -O3 -I./libStatGen/include/ -I./zlib/ -D__ZLIB_AVAILABLE__ -D_FILE_OFFSET_BITS=64 -D__STDC_LIMIT_MACROS  -DWITH_LAPACK -m64  -c src/bvsrm.cpp -o src/bvsrm.o
+g++ -ggdb -Wall -O3 -I./libStatGen/include/ -I./zlib/ -D__ZLIB_AVAILABLE__ -D_FILE_OFFSET_BITS=64 -D__STDC_LIMIT_MACROS  -DWITH_LAPACK -m64  -c src/mathfunc.cpp -o src/mathfunc.o
+g++ -ggdb -Wall -O3 -I./libStatGen/include/ -I./zlib/ -D__ZLIB_AVAILABLE__ -D_FILE_OFFSET_BITS=64 -D__STDC_LIMIT_MACROS  -DWITH_LAPACK -m64  -c src/gzstream.cpp -o src/gzstream.o
+g++ -ggdb -Wall -O3 -I./libStatGen/include/ -I./zlib/ -D__ZLIB_AVAILABLE__ -D_FILE_OFFSET_BITS=64 -D__STDC_LIMIT_MACROS  -DWITH_LAPACK -m64  -c src/ReadVCF.cpp -o src/ReadVCF.o
+g++ -ggdb -Wall -O3 -I./libStatGen/include/ -I./zlib/ -D__ZLIB_AVAILABLE__ -D_FILE_OFFSET_BITS=64 -D__STDC_LIMIT_MACROS  -DWITH_LAPACK -m64  -c src/compress.cpp -o src/compress.o
+g++ -ggdb -Wall -O3 -I./libStatGen/include/ -I./zlib/ -D__ZLIB_AVAILABLE__ -D_FILE_OFFSET_BITS=64 -D__STDC_LIMIT_MACROS  -DWITH_LAPACK -m64  -c src/lapack.cpp -o src/lapack.o
+g++ -ggdb -Wall -O3 -I./libStatGen/include/ -I./zlib/ -D__ZLIB_AVAILABLE__ -D_FILE_OFFSET_BITS=64 -D__STDC_LIMIT_MACROS  -DWITH_LAPACK -m64 ./src/main.o ./src/param.o ./src/sfba.o ./src/io.o ./src/lm.o ./src/bvsrm.o ./src/mathfunc.o ./src/gzstream.o ./src/ReadVCF.o ./src/compress.o ./src/lapack.o -lgsl -lgslcblas -pthread -lz -lm ./libStatGen/libStatGen.a /usr/lib/lapack/liblapack.a -lgfortran  /usr/lib/atlas-base/libatlas.a /usr/lib/libblas/libblas.a -Wl,--allow-multiple-definition  -o ./bin/Estep_mcmc

@@ -1,0 +1,22 @@
+srun: job 34623119 queued and waiting for resources
+srun: job 34623120 queued and waiting for resources
+srun: job 34623121 queued and waiting for resources
+srun: job 34623122 queued and waiting for resources
+srun: job 34623119 has been allocated resources
+srun: job 34623120 has been allocated resources
+srun: job 34623121 has been allocated resources
+srun: job 34623122 has been allocated resources
+running
+  '/usr/lib/R/bin/R --slave --no-restore --no-save --no-restore --file=/net/fantasia/home/yjingj/GIT/bfGWAS/bin/Mstep.r --args /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/Test_Wkdir/Eoutput/hyptemp0.txt 0 1e-6 0.1 /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/Test_Wkdir/Eoutput/EM_result.txt /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/Test_Wkdir/hypval.current'
+
+Loading required package: grid
+Loading required package: scales
+Error in file(filename, "r", encoding = encoding) : 
+  cannot open the connection
+Calls: source -> file
+In addition: Warning message:
+In file(filename, "r", encoding = encoding) :
+  cannot open file '/net/fantasia/home/yjingj/GIT/SFBA/bin/R_funcs.r': No such file or directory
+Execution halted
+make: *** [/net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/Test_Wkdir/R0.OK] Error 1
+make: Target `all' not remade because of errors.

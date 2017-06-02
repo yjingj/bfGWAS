@@ -1,0 +1,8 @@
+#n_type	6
+coding	0
+UTR	1
+promoter	2
+DHS	3
+intronic	4
+intergenic	5
+NA	5

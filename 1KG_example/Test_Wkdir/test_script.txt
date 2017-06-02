@@ -1,0 +1,82 @@
+
+# Script for testing bfGWAS
+
+################ setup directories
+
+bfGWAS_dir="/net/fantasia/home/yjingj/GIT/bfGWAS"
+data_dir="/net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData"
+wkdir="/net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/Test_Wkdir"
+
+# makdir -p $wkdir
+
+################## perl script is used to generate makefile #############
+
+####### Test slurm running
+${bfGWAS_dir}/bin/gen_mkf.pl \
+-w ${wkdir} \
+--Estep ${bfGWAS_dir}/bin/Estep_mcmc \
+--ad ${data_dir}/annos \
+--geno vcf --ac ${data_dir}/AnnoCode6.txt  \
+--gd ${data_dir}/vcfs \
+--pheno ${data_dir}/phenoAMD_1KG.txt \
+--hyp ${data_dir}/InitValues6.txt \
+-f ${data_dir}/fileheads_4region.txt \
+--rs ${bfGWAS_dir}/bin/Mstep.r \
+-G GT --maf 0.005 --smax 10 -b 10000 -N 10000 --NL 10000 \
+--em 5 -j testjob -l slurm --part nomosix,main,assembly --mem 3000 \
+--mf ${wkdir}/Test_bfGWAS.mk
+
+## Run Makefile with 4 parallel jobs
+make -k -C ${wkdir} -f ${wkdir}/Test_bfGWAS.mk -j 10 > ${wkdir}/make.output 2> ${wkdir}/make.err  &
+
+## Clean all jobs when you need rerun everything
+# make -f ${wkdir}/Test_bfGWAS.mk clean
+
+
+#################
+############## Output under ${wkdir} ###################
+
+######### /OUT/ : saves all screen outputs
+
+######### /output/ : saves all MCMC output from E-step / will be overridden by the next E-step
+# filehead.log.txt contains log file for MCMC 
+# filehead.paramtemp contains estimates for each variant with columns "ID", "chr", "bp", "ref", "alt", "maf", "func", "beta", "pi", "Zscore", "SE_beta", "LRT", "pval_LRT", "rank";
+
+# "ID" : variant ID
+# "chr" : chromosome number 
+# "bp" : base pair position
+# "REF" : reference allel
+# "ALT" : alternative allel
+# "maf" : MAF of the variant
+# "func" : annotation code used in --ac FuncAnno4.txt
+# "beta" : effect size estimate
+# "pi" : causal probability for each variant
+# "Zscore" : Zscore by single likelihood ratio test
+# "SE_beta" : from single likelihood ratio test
+# "LRT" : test statistic by single likelihood ratio test
+# "pval_LRT" : pvalue by single likelihood ratio test
+# "rank" : rank within block based on p-values, 0:top significant variant by pvalue
+
+# function LoadEMdata() in bin/R_funcs.r can be used to read this paramtemp file into R, requiring library "data.table" and "ggplot2"
+
+# filehead.hyptemp contains estimates required for M-step 
+# filehead.mcmc contains all included variants (id:chr:pos:ref:alt, seperated by ";") in the M-step, one row per MCMC iteration (can be used for calculating regional posterior inclusion probabilities)
+
+
+######### /slurm_err/ : saves all error file for slurm jobs
+
+
+###### under folder /Eoutput/ : main results ########
+# let i denote the ith EM iteration
+# log${i}.txt contains all log files for all blocks
+# hyptemp${i}.txt contains all hyptemp files for all blocks
+# paramtemp${i}.txt contains all paramtemp files for all blocks
+# EM_result.txt contains all hyper parameter estimates with columns "EM_iter_#", "PVE/heritability", "likelihood", every 4 of the following columns denotes the "causal probability" "causal probability SE" "effect size variance" "effect size variance SE" for group 0, 1, 2, ...
+# R function LoadEMhyp() in bin/R_funcs.r can be used to read EM_result.txt file
+# R function CItable() in bin/R_funcs.r can be used to convert one row of EM_result.txt to a table of annotations
+
+
+############ example R code for analysis
+see "/1KG_example/AnalyzeResults/Analysis.r" for details of loading data and make plots
+
+

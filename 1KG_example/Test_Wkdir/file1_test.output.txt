@@ -1,0 +1,28 @@
+Reading Files ... 
+start reading plink bim/fam files ...
+Start reading bim file: /net/fantasia/home/yjingj/GIT/SFBA_example/ExData/plink_files/file1.bim
+Success reading bim file.
+Start reading fam file: /net/fantasia/home/yjingj/GIT/SFBA_example/ExData/plink_files/file1.fam
+Success reading fam file.
+indicator_idv.size() = 1000
+Create PhenoID2Ind map; ni_test = 1000
+PhenoID2Ind map length = 1000
+First time reading Plink bed file: /net/fantasia/home/yjingj/GIT/SFBA_example/ExData/plink_files/file1.bed
+start reading annotation files: /net/fantasia/home/yjingj/GIT/SFBA_example/ExData/plink_files/Anno_file1.gz
+n_type = 4; mFunc: 0, 0, 450, 0, 
+total snp number = 944
+Readinf file first time cost 0.000333333mints 
+## number of total individuals = 1000
+## number of individuals with full phenotypes = 1000
+## number of total SNPs = 944
+## number of analyzed SNPs = 450
+Pass data check.
+copy phenotype success ... 
+Center phenotype ... 
+pheno_mean = 0.308538
+load genotype data cost 0.000166667mints
+Run Block MCMC...
+# of unique function types = 4
+create UcharTable ...
+Calculating Z_scores, SE(beta) and LRT statistic values, pvals ... 
+calcLR: yty = 999

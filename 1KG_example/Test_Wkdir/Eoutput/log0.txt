@@ -1,0 +1,132 @@
+##
+## GEMMA Version = bfGWAS_MCMC
+##
+## Command Line Input = -vcf /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/vcfs/C2_REGION_1KG.vcf.gz -p /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/phenoAMD_1KG.txt -a /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/annos/Anno_C2_REGION_1KG.gz -fcode /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/AnnoCode6.txt -hfile /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/Test_Wkdir/hypval.current -GTfield GT -maf 0.005 -bvsrm -rmin 1 -rmax 1 -smin 0 -smax 10 -win 100 -o C2_REGION_1KG -w 10000 -s 10000 -initype 3 -rv 1 
+##
+## Date = Fri Feb  3 18:33:46 2017
+
+##
+## Summary Statistics:
+## number of total individuals = 2504
+## number of analyzed individuals = 2504
+## number of total SNPs = 19232
+## number of analyzed SNPs = 5475
+## Phenotype mean = 0.49401
+## Phenotype var = 0.250064
+##
+## MCMC related:
+## initial value of |gamma| = 2
+## random seed = 2016
+## acceptance ratio = 0.241
+## Region_PIP = 1
+##
+## Computation Time:
+## total computation time = 1.13779 min 
+## computation time break down: 
+##      time on proposal = 6.95316e-310 min 
+##      time on mcmc = 0.769369 min 
+##      time on Omega = 6.08333e-06 min 
+Accept #add=4, total add step = 6712
+Accept #delete=4, total delete step = 6695
+Accept #switch=4812, total switch step = 6593
+Accept #other=0, total other step = 0
+##
+##
+## GEMMA Version = bfGWAS_MCMC
+##
+## Command Line Input = -vcf /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/vcfs/C3_REGION_1KG.vcf.gz -p /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/phenoAMD_1KG.txt -a /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/annos/Anno_C3_REGION_1KG.gz -fcode /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/AnnoCode6.txt -hfile /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/Test_Wkdir/hypval.current -GTfield GT -maf 0.005 -bvsrm -rmin 1 -rmax 1 -smin 0 -smax 10 -win 100 -o C3_REGION_1KG -w 10000 -s 10000 -initype 3 -rv 1 
+##
+## Date = Fri Feb  3 18:33:11 2017
+
+##
+## Summary Statistics:
+## number of total individuals = 2504
+## number of analyzed individuals = 2504
+## number of total SNPs = 30384
+## number of analyzed SNPs = 5032
+## Phenotype mean = 0.49401
+## Phenotype var = 0.250064
+##
+## MCMC related:
+## initial value of |gamma| = 1
+## random seed = 2016
+## acceptance ratio = 0.0378
+## Region_PIP = 0.0427
+##
+## Computation Time:
+## total computation time = 0.572316 min 
+## computation time break down: 
+##      time on proposal = 6.95276e-310 min 
+##      time on mcmc = 0.0413112 min 
+##      time on Omega = 0.00288762 min 
+Accept #add=280, total add step = 6551
+Accept #delete=281, total delete step = 281
+Accept #switch=195, total switch step = 289
+Accept #other=0, total other step = 12879
+##
+##
+## GEMMA Version = bfGWAS_MCMC
+##
+## Command Line Input = -vcf /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/vcfs/CFH_REGION_1KG.vcf.gz -p /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/phenoAMD_1KG.txt -a /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/annos/Anno_CFH_REGION_1KG.gz -fcode /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/AnnoCode6.txt -hfile /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/Test_Wkdir/hypval.current -GTfield GT -maf 0.005 -bvsrm -rmin 1 -rmax 1 -smin 0 -smax 10 -win 100 -o CFH_REGION_1KG -w 10000 -s 10000 -initype 3 -rv 1 
+##
+## Date = Fri Feb  3 18:33:55 2017
+
+##
+## Summary Statistics:
+## number of total individuals = 2504
+## number of analyzed individuals = 2504
+## number of total SNPs = 31330
+## number of analyzed SNPs = 3692
+## Phenotype mean = 0.49401
+## Phenotype var = 0.250064
+##
+## MCMC related:
+## initial value of |gamma| = 2
+## random seed = 2016
+## acceptance ratio = 0.1408
+## Region_PIP = 1
+##
+## Computation Time:
+## total computation time = 1.30267 min 
+## computation time break down: 
+##      time on proposal = 6.95266e-310 min 
+##      time on mcmc = 0.764553 min 
+##      time on Omega = 1.2e-06 min 
+Accept #add=3, total add step = 6519
+Accept #delete=3, total delete step = 6863
+Accept #switch=2810, total switch step = 6618
+Accept #other=0, total other step = 0
+##
+##
+## GEMMA Version = bfGWAS_MCMC
+##
+## Command Line Input = -vcf /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/vcfs/CFI_REGION_1KG.vcf.gz -p /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/phenoAMD_1KG.txt -a /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/annos/Anno_CFI_REGION_1KG.gz -fcode /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/ExData/AnnoCode6.txt -hfile /net/fantasia/home/yjingj/GIT/bfGWAS/1KG_example/Test_Wkdir/hypval.current -GTfield GT -maf 0.005 -bvsrm -rmin 1 -rmax 1 -smin 0 -smax 10 -win 100 -o CFI_REGION_1KG -w 10000 -s 10000 -initype 3 -rv 1 
+##
+## Date = Fri Feb  3 18:32:54 2017
+
+##
+## Summary Statistics:
+## number of total individuals = 2504
+## number of analyzed individuals = 2504
+## number of total SNPs = 16085
+## number of analyzed SNPs = 2206
+## Phenotype mean = 0.49401
+## Phenotype var = 0.250064
+##
+## MCMC related:
+## initial value of |gamma| = 1
+## random seed = 2016
+## acceptance ratio = 0.00115
+## Region_PIP = 0.0018
+##
+## Computation Time:
+## total computation time = 0.286105 min 
+## computation time break down: 
+##      time on proposal = 6.95296e-310 min 
+##      time on mcmc = 0.00861287 min 
+##      time on Omega = 0.00285767 min 
+Accept #add=11, total add step = 6569
+Accept #delete=12, total delete step = 12
+Accept #switch=0, total switch step = 5
+Accept #other=0, total other step = 13414
+##
