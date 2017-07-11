@@ -98,7 +98,7 @@ void LM::WriteFiles ()
 	ofstream outfile (file_str.c_str(), ofstream::out);
 	if (!outfile) {cout<<"error writing file: "<<file_str.c_str()<<endl; return;}
 	
-		/*outfile<<"CHR"<<"\t"<<"ID"<<"\t"<<"POS"<<"\t"<<"n_miss"<<"\t"<<"ALT"<<"\t"<<"REF"<<"\t"<<"maf"<<"\t";
+		/*outfile<<"CHR"<<"\t"<<"ID"<<"\t"<<"POS"<<"\t"<<"n_miss"<<"\t"<<"REF"<<"\t"<<"ALT"<<"\t"<<"maf"<<"\t";
 		
 		if (a_mode==51) {
 			outfile<<"beta"<<"\t"<<"se"<<"\t"<<"p_wald"<<endl;
@@ -115,7 +115,7 @@ void LM::WriteFiles ()
 		for (size_t i=0; i<snpInfo.size(); ++i) {
 			if (indicator_snp[i]==0) {continue;}
 			
-			outfile<<snpInfo[i].chr<<"\t"<<snpInfo[i].rs_number<<"\t"<<snpInfo[i].base_position<<"\t"<<snpInfo[i].n_miss<<"\t"<<snpInfo[i].a_minor<<"\t"<<snpInfo[i].a_major<<"\t"<<fixed<<setprecision(3)<<snpInfo[i].maf<<"\t";
+			outfile<<snpInfo[i].chr<<"\t"<<snpInfo[i].rs_number<<"\t"<<snpInfo[i].base_position<<"\t"<<snpInfo[i].n_miss<<"\t"<<snpInfo[i].a_major<<"\t"<<snpInfo[i].a_minor<<"\t"<<fixed<<setprecision(3)<<snpInfo[i].maf<<"\t";
 			
 			if (a_mode==51) {
 				outfile<<scientific<<setprecision(6)<<sumStat[t].beta<<"\t"<<sumStat[t].se<<"\t"<<sumStat[t].p_wald <<endl;

@@ -681,14 +681,14 @@ bool ReadFile_vcf (const string &file_vcf, const set<string> &setSnps, vector<bo
                     case 2:
 			            rs = s; break;
                     case 3:
-                        minor = s; break;
-                    case 4:
                         major = s; break;
+                    case 4:
+                        minor = s; break;
                     default:
                         break;
                 }
                 if(rs.compare(".") == 0 || rs.empty()){
-                    rs = chr + ":" + to_string(b_pos) + ":" + minor + ":" + major;
+                    rs = chr + ":" + to_string(b_pos) + ":" + major + ":" + minor;
                 }
                 if (setSnps.size()!=0 && setSnps.count(rs)==0) {
                     indicator_snp.push_back(0);
@@ -813,7 +813,7 @@ bool ReadFile_vcf (const string &file_vcf, const set<string> &setSnps, vector<bo
                                 geno = strtod(p, NULL);
                                 if(geno < 0 || geno > 2) {geno = -9;} // invalid dosage
                             }else{
-                                cout << chr + ":" + to_string(b_pos) + ":" + minor + ":" + major << "; Pheno_ID = " << pheno_id << endl;
+                                cout << chr + ":" + to_string(b_pos) + ":" + major + ":" + minor << "; Pheno_ID = " << pheno_id << endl;
                                 cerr << " has dosage data that is not a digit ... " << endl;
                                 exit(-1);
                             }                        
@@ -1012,16 +1012,16 @@ bool ReadFile_geno (const string &file_geno, const set<string> &setSnps, vector<
                         case 2:
                             b_pos=atol(s.c_str()); break;
                         case 3:
-                            minor = s; break;
-                        case 4:
                             major = s; break;
+                        case 4:
+                            minor = s; break;
                         default:
                             break;
                     }
                     pch = (nch == NULL) ? NULL : nch+1;  
                 }
                 if(rs.compare(".") == 0 || rs.empty()){
-                    rs = chr + ":" + to_string(b_pos) + ":" + minor + ":" + major;
+                    rs = chr + ":" + to_string(b_pos) + ":" + major + ":" + minor;
                 }
                 else if ( tab_count == SampleVcfPos[ctest_idv] )
                 {
