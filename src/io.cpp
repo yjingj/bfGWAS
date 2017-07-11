@@ -783,9 +783,6 @@ bool ReadFile_vcf (const string &file_vcf, const set<string> &setSnps, vector<bo
 
                     if (p==NULL) {
                         geno = -9;//missing
-                        genotype_miss[ctest_idv]=1; n_miss++; c_idv++; ctest_idv++; 
-                        	pch = (nch == NULL) ? NULL : nch+1;
-                        	continue;
                     }
                     //start here
                     else if ( (p[1] == '/') || (p[1] == '|') ) {
@@ -808,7 +805,7 @@ bool ReadFile_vcf (const string &file_vcf, const set<string> &setSnps, vector<bo
                                 if(geno != 1 && geno != 0 && geno != 2){ geno = -9; } // multi-allelic
                             }                   
                         }
-                        else {
+                        else if ( GTfield != "GT" ) {
                             //read dosage data
                             if( (p[0]=='.') && ( (p[1] == '\t') || (p[1] == ':') ) ){
                                 geno = -9; // missing                           
@@ -816,9 +813,12 @@ bool ReadFile_vcf (const string &file_vcf, const set<string> &setSnps, vector<bo
                                 geno = strtod(p, NULL);
                                 if(geno < 0 || geno > 2) {geno = -9;} // invalid dosage
                             }else{
-                                cerr << "dosage data is not a digit ... " << endl;
+                                cout << chr + ":" + to_string(b_pos) + ":" + minor + ":" + major << "; Pheno_ID = " << pheno_id << endl;
+                                cerr << " has dosage data that is not a digit ... " << endl;
                                 exit(-1);
                             }                        
+                        }else{
+                            geno = -9; // Not in GT format with GTfield="GT"
                         }
                                                 // Missing or multi-allelic
                         if(geno == -9){
@@ -1636,19 +1636,11 @@ bool VCFKin (const string &file_vcf, vector<bool> &indicator_idv, vector<bool> &
 
                         if (p==NULL) {
                             geno = -9;//missing
-                            gsl_vector_set (geno_vec, ctest_idv, geno);
-                            n_miss++; c_idv++; ctest_idv++; 
-                            pch = (nch == NULL) ? NULL : nch+1;
-                            continue;
                         }
                         else if ( (p[1] == '/') || (p[1] == '|') ) {
                         //read bi-allelic GT
                             if( (p[0]=='.') && (p[2]=='.')){
                                 geno = -9;//missing
-                                gsl_vector_set (geno_vec, ctest_idv, geno);
-                                n_miss++; c_idv++; ctest_idv++;
-                                pch = (nch == NULL) ? NULL : nch+1;
-                                continue;
                             }
                             else if ( (p[0]=='.') && (p[2]!='.')) {
                                 geno = (double)(p[2] -'0');
@@ -1658,20 +1650,26 @@ bool VCFKin (const string &file_vcf, vector<bool> &indicator_idv, vector<bool> &
                             }
                             else geno = (double)((p[0] - '0') + (p[2]- '0'));
                         }
-                        else {
+                        else if ( GTfield != "GT" ) {
                             //read dosage data
                             if( (p[0]=='.') && ( (p[1] == '\t') || (p[1] == ':') ) ){
-                                geno = -9;
-                                gsl_vector_set (geno_vec, ctest_idv, geno);
-                                n_miss++; c_idv++; ctest_idv++;
-                                pch = (nch == NULL) ? NULL : nch+1;
-                                continue;                               
+                                geno = -9;                              
                             }else if (isdigit(p[0])){
                                 geno = strtod(p, NULL);
                             }else{
-                                cerr << "dosage data is not a digit ... " << endl;
+                                cout << "Pheno_ID = " << pheno_id  << endl;
+                                cerr << " has dosage data that is not a digit ... " << endl;
                                 exit(-1);
                             }                        
+                        }else{
+                            geno = -9;//missing
+                        }
+
+                        if(geno == -9){ // missing 
+                            gsl_vector_set (geno_vec, ctest_idv, geno);
+                            n_miss++; c_idv++; ctest_idv++; 
+                            pch = (nch == NULL) ? NULL : nch+1;
+                            continue;
                         }
 
                         gsl_vector_set (geno_vec, ctest_idv, geno);
@@ -1871,7 +1869,7 @@ bool ReadFile_vcf (const string &file_vcf, vector<bool> &indicator_idv, vector<b
                                 if(geno != 1 && geno != 0 && geno != 2){ geno = -9; } // multi-allelic
                             }                   
                     	}
-                    	else {
+                    	else if (GTfield != "GT") {
                         	//read dosage data
                         	if( (p[0]=='.') && ( (p[1] == '\t') || (p[1] == ':') ) ){
                         		geno = -9; // missing                      		
@@ -1879,7 +1877,8 @@ bool ReadFile_vcf (const string &file_vcf, vector<bool> &indicator_idv, vector<b
                         		geno = strtod(p, NULL);
                                 if(geno < 0 || geno > 2) {geno = -9;} // invalid dosage
                         	}else{
-                        		cerr << "dosage data is not a digit ... " << endl;
+                                cout << "Pheno_ID = " << pheno_id << endl;
+                        		cerr << " has dosage data that is not a digit ... " << endl;
                         		exit(-1);
                         	}                        
                     	}

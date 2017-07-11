@@ -642,7 +642,7 @@ void BFGWAS::BatchRun (PARAM &cPar)
         gsl_vector_free(y);
 
         cout << "writting genotype file success ... "<< endl; 
-        //exit(EXIT_SUCCESS);
+        // exit(EXIT_SUCCESS);
     }else{
     	cPar.CheckData();
 		if (cPar.error==true) {cout<<"error! fail to check data. "<<endl; return;}
