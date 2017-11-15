@@ -1,6 +1,5 @@
 *~
 *.o
-*.a
 *.bak
 dox/
 dox_errors.txt
