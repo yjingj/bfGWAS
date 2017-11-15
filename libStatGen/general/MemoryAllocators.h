@@ -26,6 +26,10 @@ template <class T> void FreeMatrix(T ** & matrix, int rows);
 
 char **  AllocateCharMatrix(int rows, int cols);
 void     FreeCharMatrix(char ** & matrix, int rows);
+//Jy
+unsigned char ** AllocateUCharMatrix(unsigned int rows, unsigned int cols);
+void	 FreeUCharMatrix(unsigned char ** & matrix, unsigned int rows);
+void InitialUCharMatrix(unsigned char ** matrix, unsigned int rows, unsigned int cols, unsigned char c);
 
 float ** AllocateFloatMatrix(int rows, int cols);
 void     FreeFloatMatrix(float ** & matrix, int rows);

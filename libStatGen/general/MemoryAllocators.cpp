@@ -16,6 +16,7 @@
  */
 
 #include "MemoryAllocators.h"
+#include <limits.h>
 
 #include <stdlib.h>
 
@@ -72,6 +73,44 @@ int ** AllocateIntMatrix(int rows, int cols)
 
     return matrix;
 }
+
+unsigned char ** AllocateUCharMatrix(unsigned int rows, unsigned int cols)
+{
+    unsigned char ** matrix = new unsigned char * [rows];
+    
+    // Stop early if we are out of memory
+    if (matrix == NULL)
+        return NULL;
+    
+    for (unsigned int i = 0; i < rows; i++)
+    {
+        matrix[i] = new unsigned char [cols];
+        
+        // Safely unravel allocation if we run out of memory
+        if (matrix[i] == NULL)
+        {
+            while (i--)
+                delete [] matrix[i];
+            
+            delete [] matrix;
+            
+            return NULL;
+        }
+    }
+    
+    return matrix;
+}
+
+
+
+void InitialUCharMatrix(unsigned char ** matrix, unsigned int rows, unsigned int cols, unsigned char c){
+    for (unsigned int i=0; i<rows; i++) {
+        for (unsigned int j=0; j<cols; j++) {
+            matrix[i][j] = c;
+        }
+    }
+}
+
 
 char ** AllocateCharMatrix(int rows, int cols)
 {
@@ -140,6 +179,22 @@ void FreeCharCube(char *** & cube, int n, int rows)
     cube = NULL;
 }
 
+
+void FreeUCharMatrix(unsigned char ** & matrix, unsigned int rows)
+{
+    if (matrix == NULL)
+        return;
+
+    for (unsigned int i = 0; i < rows; i++)
+        delete [] matrix[i];
+
+    delete [] matrix;
+
+    matrix = NULL;
+}
+
+
+
 void FreeCharMatrix(char ** & matrix, int rows)
 {
     if (matrix == NULL)
@@ -152,6 +207,9 @@ void FreeCharMatrix(char ** & matrix, int rows)
 
     matrix = NULL;
 }
+
+
+
 
 void FreeFloatMatrix(float ** & matrix, int rows)
 {
