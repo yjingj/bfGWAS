@@ -65,3 +65,4 @@ COMPFLAGS = $(CFLAGS) $(USER_WARNINGS) -I$(INCLUDE_PATH) $(CURRENT_DIR_INCLUDE) 
 
 # default installation directory
 INSTALLDIR?=/usr/local/bin
+# INSTALLDIR?=/home/jyang/local/bin

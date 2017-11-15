@@ -27,7 +27,8 @@ SRC_DIR  = ./src
 
 CPP = g++
 
-CPPFLAGS = -ggdb -Wall -O3 -I./libStatGen/include/ -I./zlib/ -D__ZLIB_AVAILABLE__ -D_FILE_OFFSET_BITS=64 -D__STDC_LIMIT_MACROS #-pg
+# Install gsl, zlib; Replage the flag -I accordingly for gsl zlib
+CPPFLAGS = -ggdb -Wall -O3 -I/home/jyang/local/lib/gsl/include -I./libStatGen/include/ -I/home/jyang/local/lib/zlib -D__ZLIB_AVAILABLE__ -D_FILE_OFFSET_BITS=64 -D__STDC_LIMIT_MACROS #-pg
 
 LIBS = -lgsl -lgslcblas -pthread -lz -lm ./libStatGen/libStatGen.a
 

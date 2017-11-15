@@ -22,6 +22,7 @@
 #include "param.h"
 #include "VcfFileReader.h"
 #include "ReadVCF.h"
+#include "mathfunc.h" 
 
 using namespace std;
 
