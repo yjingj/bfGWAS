@@ -27,7 +27,7 @@ SRC_DIR  = ./src
 
 CPP = g++
 
-=======
+# =======
 ## Will need the bfGWAS/libStateGen/MemoryAllocators.* from my github directory; the ones from original libStatGen.git will cause error
 ## Please add -I[path to zlib] -I[path to gsl] accordingly
 CPPFLAGS = -ggdb -Wall -O3 -I/home/jyang/local/lib/gsl/include -I./libStatGen/include/ -I/home/jyang/local/lib/zlib -D__ZLIB_AVAILABLE__ -D_FILE_OFFSET_BITS=64 -D__STDC_LIMIT_MACROS #-pg
