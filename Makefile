@@ -20,11 +20,8 @@ DIST_NAME = Estep_mcmc
 # Edit below this line with caution
 # --------------------------------------------------------------------
 
-
 BIN_DIR  = ./bin
-
 SRC_DIR  = ./src
-
 CPP = g++
 
 ## Will need the bfGWAS/libStateGen/MemoryAllocators.* from "https://github.com/yjingj/bfGWAS/tree/master/libStatGen/general"; the ones from original libStatGen.git will cause error
@@ -39,17 +36,15 @@ SOURCES = $(SRC_DIR)/main.cpp
 
 HDR = 
 
-# Detailed library paths, D for dynamic and S for static
 
+# Detailed library paths, D for dynamic and S for static
 LIBS_LNX_D_LAPACK = -llapack
 LIBS_MAC_D_LAPACK = -framework Veclib
 LIBS_LNX_S_LAPACK = liblapack.a -lgfortran libatlas.a libblas.a -Wl,--allow-multiple-definition 
 
 # Options
-
-
-  SOURCES += $(SRC_DIR)/param.cpp $(SRC_DIR)/bfgwas.cpp $(SRC_DIR)/io.cpp $(SRC_DIR)/lm.cpp  $(SRC_DIR)/bvsrm.cpp $(SRC_DIR)/mathfunc.cpp $(SRC_DIR)/gzstream.cpp $(SRC_DIR)/ReadVCF.cpp $(SRC_DIR)/compress.cpp
-  HDR += $(SRC_DIR)/param.h $(SRC_DIR)/bfgwas.h $(SRC_DIR)/io.h $(SRC_DIR)/lm.h $(SRC_DIR)/bvsrm.h $(SRC_DIR)/mathfunc.h $(SRC_DIR)/gzstream.h $(SRC_DIR)/ReadVCF.h $(SRC_DIR)/compress.h
+SOURCES += $(SRC_DIR)/param.cpp $(SRC_DIR)/bfgwas.cpp $(SRC_DIR)/io.cpp $(SRC_DIR)/lm.cpp  $(SRC_DIR)/bvsrm.cpp $(SRC_DIR)/mathfunc.cpp $(SRC_DIR)/gzstream.cpp $(SRC_DIR)/ReadVCF.cpp $(SRC_DIR)/compress.cpp
+HDR += $(SRC_DIR)/param.h $(SRC_DIR)/bfgwas.h $(SRC_DIR)/io.h $(SRC_DIR)/lm.h $(SRC_DIR)/bvsrm.h $(SRC_DIR)/mathfunc.h $(SRC_DIR)/gzstream.h $(SRC_DIR)/ReadVCF.h $(SRC_DIR)/compress.h
 
 
 ifdef WITH_LAPACK
