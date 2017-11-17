@@ -25,7 +25,7 @@ SRC_DIR  = ./src
 CPP = g++
 
 ## Will need the bfGWAS/libStateGen/MemoryAllocators.* from "https://github.com/yjingj/bfGWAS/tree/master/libStatGen/general"; the ones from original libStatGen.git will cause error
-## C++ libraries used in this tool: lapack, atlas, blas, zlib, gsl, eigen3; Please add -I[path to libraries] accordingly
+## C++ libraries used in this tool: zlib, gsl, eigen3, lapack, atlas, blas; Please add -I[path to libraries] accordingly
 CPPFLAGS = -ggdb -Wall -O3 -I/home/jyang/local/lib/gsl/include -I./libStatGen/include/ -I/home/jyang/local/lib/zlib -I/home/jyang/local/lib/ -I/usr/lib64 -D__ZLIB_AVAILABLE__ -D_FILE_OFFSET_BITS=64 -D__STDC_LIMIT_MACROS #-pg
 
 LIBS = -lgsl -lgslcblas -pthread -lz -lm ./libStatGen/libStatGen.a
@@ -40,7 +40,11 @@ HDR =
 # Detailed library paths, D for dynamic and S for static
 LIBS_LNX_D_LAPACK = -llapack
 LIBS_MAC_D_LAPACK = -framework Veclib
-LIBS_LNX_S_LAPACK = liblapack.a -lgfortran libatlas.a libblas.a -Wl,--allow-multiple-definition 
+
+## Please revise the library path accordingly for "lapack, atlas, blas" here 
+LIBS_LNX_S_LAPACK = /usr/lib64/liblapacke.so -lgfortran /usr/lib64/atlas/libsatlas.so.3 /usr/lib64/libblas.so -Wl,--allow-multiple-definition 
+
+#LIBS_LNX_S_LAPACK = liblapack.a -lgfortran libatlas.a libblas.a -Wl,--allow-multiple-definition 
 
 # Options
 SOURCES += $(SRC_DIR)/param.cpp $(SRC_DIR)/bfgwas.cpp $(SRC_DIR)/io.cpp $(SRC_DIR)/lm.cpp  $(SRC_DIR)/bvsrm.cpp $(SRC_DIR)/mathfunc.cpp $(SRC_DIR)/gzstream.cpp $(SRC_DIR)/ReadVCF.cpp $(SRC_DIR)/compress.cpp
