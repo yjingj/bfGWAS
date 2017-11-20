@@ -562,28 +562,6 @@ bool ReadFile_fam (const string &file_fam, vector<bool> &indicator_idv, vector<d
 	return true;
 }
 
-bool CreatVcfHash(const string &file_vcf, StringIntHash &sampleID2vcfInd, const string &file_sample){
-        
-    VcfFileReader inFile;
-    VcfHeader header;
-    
-    if(!inFile.open(file_vcf.c_str(), header, file_sample.c_str(), NULL, NULL))
-    {
-        std::cerr << "Unable to open " << file_vcf << "\n";
-        exit(1);
-    }
-    
-    uint numSample = (uint)header.getNumSamples();
-    cout << "numSample = " << numSample << endl;
-    String sample_name;
-	for (size_t i=0; i<numSample; ++i) {
-        sample_name = header.getSampleName(i);
-        sampleID2vcfInd.Add(sample_name, i);
-	}
-    cout << "\n create hash sampleID to vcf index success...\n";
-    return true;
-}
-
 /* void GetVcfPos(const vector<string> &VcfSampleID, const map<string, size_t> &PhenoID2Ind, vector <size_t> &SampleVcfPos)
 {
     size_t yidx;

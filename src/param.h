@@ -30,8 +30,6 @@
 #include "gsl/gsl_matrix.h"
 
 #include "VcfFileReader.h"
-#include "StringBasics.h"
-#include "StringHash.h"
 #include "MemoryAllocators.h"
 
 
@@ -166,7 +164,6 @@ public:
     size_t UnCompBufferSize;
     vector <size_t> CompBuffSizeVec;
     bool Compress_Flag;
-    StringIntHash sampleID2vcfInd;
     map<string, size_t>  PhenoID2Ind;
     vector<size_t> SampleVcfPos;
     vector<string> VcfSampleID; // size=total sample #
