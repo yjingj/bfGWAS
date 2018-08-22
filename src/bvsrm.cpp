@@ -926,7 +926,7 @@ void BVSRM::InitialMCMC (uchar **X, const gsl_vector *Uty, vector<size_t> &rank,
 
     } // Start with most significant variants from SVT
     else if(iniType == 3){
-        cout << "Start with Step-wise selected variants. \n";
+        cout << "\n Start with Step-wise selected variants. \n";
     vector<pair<size_t, double> > rank_loglr;
     size_t posr, radd;
 
@@ -982,7 +982,7 @@ void BVSRM::InitialMCMC (uchar **X, const gsl_vector *Uty, vector<size_t> &rank,
         
         if (rank_loglr[0].second > q_genome) {
             radd = rank_loglr[0].first;
-           // cout << "XtXr : "; PrintMatrix(XtXr, rank.size(), rank.size());
+            // cout << "XtXr : "; PrintMatrix(XtXr, rank.size(), rank.size());
             if (ColinearTest(X, Xr, XtXr, radd, rank.size())) {
                 continue;
             }
@@ -991,13 +991,13 @@ void BVSRM::InitialMCMC (uchar **X, const gsl_vector *Uty, vector<size_t> &rank,
                 getGTgslVec(X, xvec, posr, ni_test, ns_test, SNPsd, SNPmean,CompBuffSizeVec, UnCompBufferSize, Compress_Flag, UcharTable);
                 rank.push_back(radd);
                 rank_loglr.erase(rank_loglr.begin());
-                //cout << "rank added: " << radd << " with LRT "<< rank_loglr[0].second << "," ;
+               // cout << "rank added: " << radd << " with LRT "<< rank_loglr[0].second << "," ;
             }
         }
         else break;
     }
         cHyp.n_gamma = rank.size();
-        //cout <<"Initial XtX: \n"; PrintMatrix(XtXr, cHyp.n_gamma, cHyp.n_gamma);
+        cout <<"Initial XtX: \n"; PrintMatrix(XtXr, cHyp.n_gamma, cHyp.n_gamma);
         gsl_matrix_free(Xr);
         gsl_matrix_free(XtXr);
         gsl_vector_free(Xtyr);
@@ -1779,13 +1779,13 @@ void BVSRM::MCMC (uchar **X, const gsl_vector *y, bool original_method) {
         loglike_old += loglikegamma;
     }
     if (!Error_Flag) {
-       // cout <<  "logPost_old = " << logPost_old << endl;
+       //cout <<  "logPost_old = " << logPost_old << endl;
     }
     else {
         cerr << "Failed at initialMCMC...\n";
         exit(-1);
     }
-    //cout <<  "Initial logPost_old = " << logPost_old << endl;
+    cout <<  "Initial logPost_old = " << logPost_old << endl;
     
     //calculate centered z_hat, and pve
     if (a_mode==13) {
@@ -1848,12 +1848,12 @@ void BVSRM::MCMC (uchar **X, const gsl_vector *y, bool original_method) {
         
         for (size_t i=0; i<n_mh; ++i) {
 
-            //cout << "\n \n propose gamam...\n";
-            //cout << "old rank: "; PrintVector(rank_old);
+           // cout << "\n \n propose gamam...\n";
+           // cout << "old rank: "; PrintVector(rank_old);
             //repeat = 1;
             logMHratio = ProposeGamma (rank_old, rank_new, p_gamma, cHyp_old, cHyp_new, repeat, X, z, Xgamma_old, XtX_old, Xtz_old, ztz, flag_gamma, Xgamma_new, XtX_new, Xtz_new); //JY
            // rank_new.clear(); cHyp_new.n_gamma=0;
-            //cout << "propose new rank: "; PrintVector(rank_new);
+           // cout << "propose new rank: "; PrintVector(rank_new);
             //cout << "flag_gamma = " << flag_gamma << endl;
             //cout << "propose gamma success... with rank_new.size = " << rank_new.size() << endl;
             //cout << "propose gamma logMHratio = "<<logMHratio << "; MHratio = " << exp(logMHratio) << endl;
@@ -1882,7 +1882,7 @@ void BVSRM::MCMC (uchar **X, const gsl_vector *y, bool original_method) {
              // cout << "Calcposterior success." << endl;
             if (!Error_Flag) {
                 logMHratio += logPost_new-logPost_old;
-                //cout <<"logPost_old = " << logPost_old<< "; logPost_new = "<< logPost_new<< "\n logMHratio = " << logMHratio<< "; MHratio = " << exp(logMHratio) << endl;
+               // cout <<"logPost_old = " << logPost_old<< "; logPost_new = "<< logPost_new<< "\n logMHratio = " << logMHratio<< "; MHratio = " << exp(logMHratio) << endl;
                 if (logMHratio>0 || log(gsl_rng_uniform(gsl_r))<logMHratio)
                     { accept=1; if (flag_gamma < 4) n_accept++;}
                 else {accept=0;}
@@ -1896,7 +1896,7 @@ void BVSRM::MCMC (uchar **X, const gsl_vector *y, bool original_method) {
             accept = 0;
         }
             
-            //cout << "accept = " << accept << endl;
+           // cout << "accept = " << accept << endl;
             
             if (accept==1) {
                     if(flag_gamma==1) nadd_accept++;
@@ -1909,8 +1909,8 @@ void BVSRM::MCMC (uchar **X, const gsl_vector *y, bool original_method) {
                     cHyp_old.n_gamma = cHyp_new.n_gamma;
                // cout << "cHyp_old.m_gamma = "; PrintVector(cHyp_old.m_gamma);
                     cHyp_old.m_gamma = cHyp_new.m_gamma;
-                //cout << "cHyp_new.m_gamma = "; PrintVector(cHyp_new.m_gamma);
-                //cout << "cHyp_old.m_gamma = "; PrintVector(cHyp_old.m_gamma);
+               // cout << "cHyp_new.m_gamma = "; PrintVector(cHyp_new.m_gamma);
+               // cout << "cHyp_old.m_gamma = "; PrintVector(cHyp_old.m_gamma);
                     cHyp_old.pve = cHyp_new.pve;
                     //cHyp_old.rv = cHyp_new.rv;
                     //cHyp_old.pge = cHyp_new.pge;

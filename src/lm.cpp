@@ -748,7 +748,7 @@ void MatrixCalcLmLR (uchar **X, const gsl_vector *y, vector<pair<size_t, double>
     gsl_vector *xvec = gsl_vector_alloc(ni_test);
 	double yty, xty, xtx, log_lr, beta_est, se_beta;
 	gsl_blas_ddot(y, y, &yty);
-    //cout << "calcLR: yty = " << yty << endl;
+    cout << "calcLR: yty = " << yty << endl;
     
 	for (size_t i=0; i<ns_test; ++i) {
         
@@ -761,7 +761,7 @@ void MatrixCalcLmLR (uchar **X, const gsl_vector *y, vector<pair<size_t, double>
 
         //calculate Zscores and se_beta
         beta_est = xty / xtx;
-        se_beta = sqrt(yty / ( ((double)ni_test) * xtx ) );
+        se_beta = sqrt((yty/xtx - beta_est * beta_est) / (double)ni_test) ;
         Z_scores.push_back(beta_est / se_beta);
         SE_beta.push_back(se_beta);
 
